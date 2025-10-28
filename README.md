@@ -85,7 +85,7 @@ Before you begin, ensure you have the following installed on your machine:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/utopiahire.git
+git clone https://github.com/Hayderjamli/utopiahire.git
 cd utopiahire
 ```
 
