@@ -69,3 +69,5 @@ htmlcov/
 *.bak
 *.tmp
 .cache/
+PUSH_CHECKLIST.md
+QUICKSTART.md
