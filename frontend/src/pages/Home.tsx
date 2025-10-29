@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../AuthContext'
 import { FaRocket, FaBrain, FaChartLine, FaStar, FaCheckCircle } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { cn } from '../lib/utils'
 
 export default function Home() {
   const context = useContext(AuthContext)
@@ -12,138 +14,243 @@ export default function Home() {
   const { openAuthModal } = context
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50">
-      {/* Animated background blobs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 z-[-1] animate-fade-in opacity-0 animation-delay-1000">
+        <div
+          className="absolute inset-0 brightness-150"
+          style={{
+            background: `
+              radial-gradient(circle at top left, var(--gradient-1), transparent 50%),
+              radial-gradient(circle at top right, var(--gradient-2), transparent 50%),
+              radial-gradient(circle at bottom left, var(--gradient-2), transparent 50%),
+              radial-gradient(circle at bottom right, var(--gradient-1), transparent 50%)
+            `,
+          }}
+        />
+        <div className="absolute inset-0 backdrop-blur-[100px]" />
+      </div>
 
       {/* Hero Section */}
       <section className="relative container pt-20 pb-32">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
-            <FaRocket className="animate-bounce" />
-            <span>AI-Powered Interview Practice</span>
-          </div>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className={cn(
+              "inline-flex items-center gap-2 rounded-full border px-4 py-2 backdrop-blur-md mb-6",
+              "border-black/20 bg-white/10 hover:bg-black/20 transition-colors"
+            )}
+          >
+            <FaRocket className="text-primary animate-bounce" />
+            <span className="text-sm font-medium text-foreground">AI-Powered Interview Practice</span>
+          </motion.div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-700 bg-clip-text text-transparent animate-fade-in-up">
-            Master Your Next Interview
-          </h1>
+          {/* Main Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
+          >
+            <span className="text-gradient">Master Your Next Interview</span>
+          </motion.h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto font-medium"
+          >
             Practice with AI-powered simulations, get instant feedback, and land your dream job with confidence.
-          </p>
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-400">
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <button
               onClick={() => openAuthModal('register')}
-              className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+              className="group relative px-8 py-4 background-gradient text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
             >
               <span className="relative z-10">Start Free Trial</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-secondary-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
             </button>
             <button
               onClick={() => openAuthModal('login')}
-              className="px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-primary-500 hover:text-primary-600 shadow-sm hover:shadow-md transition-all duration-200"
+              className="px-8 py-4 bg-card text-card-foreground font-semibold rounded-xl border-2 border-border hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all duration-200"
             >
               Sign In
             </button>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-600">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+          >
             <div>
-              <div className="text-3xl font-bold text-primary-600">10K+</div>
-              <div className="text-sm text-gray-600 mt-1">Users</div>
+              <div className="text-3xl font-bold text-gradient">10K+</div>
+              <div className="text-sm text-muted-foreground mt-1">Users</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary-700">50K+</div>
-              <div className="text-sm text-gray-600 mt-1">Interviews</div>
+              <div className="text-3xl font-bold text-gradient">50K+</div>
+              <div className="text-sm text-muted-foreground mt-1">Interviews</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-secondary-700">95%</div>
-              <div className="text-sm text-gray-600 mt-1">Success Rate</div>
+              <div className="text-3xl font-bold text-gradient">95%</div>
+              <div className="text-sm text-muted-foreground mt-1">Success Rate</div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="relative container py-20">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose UtopiaHire?</h2>
-          <p className="text-xl text-gray-600">Everything you need to ace your next interview</p>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold text-foreground mb-4"
+          >
+            Why Choose UtopiaHire?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-xl text-muted-foreground"
+          >
+            Everything you need to ace your next interview
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Feature 1 */}
-          <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -8 }}
+            className="group relative bg-card rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+          >
+            <div className="absolute inset-0 background-gradient rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
             <div className="relative">
-              <div className="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <FaBrain className="text-2xl text-primary-600" />
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <FaBrain className="text-2xl text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">AI-Powered Feedback</h3>
-              <p className="text-gray-600">Get instant, personalized feedback on your answers with actionable insights to improve.</p>
+              <h3 className="text-xl font-semibold text-card-foreground mb-3">AI-Powered Feedback</h3>
+              <p className="text-muted-foreground">Get instant, personalized feedback on your answers with actionable insights to improve.</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Feature 2 */}
-          <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ y: -8 }}
+            className="group relative bg-card rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+          >
+            <div className="absolute inset-0 background-gradient rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
             <div className="relative">
-              <div className="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <FaChartLine className="text-2xl text-primary-700" />
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <FaChartLine className="text-2xl text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Track Progress</h3>
-              <p className="text-gray-600">Monitor your improvement over time with detailed analytics and performance metrics.</p>
+              <h3 className="text-xl font-semibold text-card-foreground mb-3">Track Progress</h3>
+              <p className="text-muted-foreground">Monitor your improvement over time with detailed analytics and performance metrics.</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Feature 3 */}
-          <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary-600 to-secondary-800 rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ y: -8 }}
+            className="group relative bg-card rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+          >
+            <div className="absolute inset-0 background-gradient rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
             <div className="relative">
-              <div className="w-14 h-14 bg-secondary-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <FaStar className="text-2xl text-secondary-700" />
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <FaStar className="text-2xl text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Real Scenarios</h3>
-              <p className="text-gray-600">Practice with realistic interview scenarios from top companies across industries.</p>
+              <h3 className="text-xl font-semibold text-card-foreground mb-3">Real Scenarios</h3>
+              <p className="text-muted-foreground">Practice with realistic interview scenarios from top companies across industries.</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Social Proof */}
       <section className="relative container py-20">
-        <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-3xl p-12 text-center text-white shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="background-gradient rounded-3xl p-12 text-center text-white shadow-2xl"
+        >
           <div className="flex justify-center gap-1 mb-4">
             {[...Array(5)].map((_, i) => <FaStar key={i} className="text-yellow-300 text-2xl" />)}
           </div>
           <h3 className="text-3xl font-bold mb-4">Loved by thousands of job seekers</h3>
-          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             "This platform helped me land my dream job at a FAANG company. The AI feedback was incredibly detailed!"
           </p>
           <div className="flex items-center justify-center gap-3">
             <div className="w-12 h-12 bg-white/20 rounded-full"></div>
             <div className="text-left">
               <div className="font-semibold">Sarah Chen</div>
-              <div className="text-sm text-primary-200">Software Engineer at Google</div>
+              <div className="text-sm text-white/80">Software Engineer at Google</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
       <section className="relative container py-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ready to ace your interview?</h2>
-        <p className="text-xl text-gray-600 mb-8">Join thousands of successful candidates today</p>
-        <button
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold text-foreground mb-6"
+        >
+          Ready to ace your interview?
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-xl text-muted-foreground mb-8"
+        >
+          Join thousands of successful candidates today
+        </motion.p>
+        <motion.button
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           onClick={() => openAuthModal('register')}
-          className="px-10 py-5 bg-gradient-to-r from-primary-600 to-primary-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
+          className="px-10 py-5 background-gradient text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
         >
           Get Started for Free
-        </button>
+        </motion.button>
       </section>
     </div>
   )
