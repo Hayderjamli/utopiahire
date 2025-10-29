@@ -1,5 +1,7 @@
 import React from 'react'
 import { FaCheck } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { cn } from '../lib/utils'
 
 interface Tier {
   name: string
@@ -54,46 +56,88 @@ const tiers: Tier[] = [
 
 export default function Pricing() {
   return (
-    <div className="bg-gradient-to-b from-white to-primary-50/40">
+    <div className="relative min-h-screen">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 z-[-1] opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(circle at top center, var(--gradient-1), transparent 60%),
+              radial-gradient(circle at bottom center, var(--gradient-2), transparent 60%)
+            `,
+          }}
+        />
+      </div>
+
       <section className="container pt-16 pb-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-700 bg-clip-text text-transparent">
-          Simple, transparent pricing
-        </h1>
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-extrabold tracking-tight"
+        >
+          <span className="text-gradient">Simple, transparent pricing</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto"
+        >
           Choose a plan that scales with your ambition.
-        </p>
+        </motion.p>
       </section>
 
       <section className="container pb-20">
         <div className="grid gap-6 md:grid-cols-3">
-          {tiers.map((t) => (
-            <div key={t.name} className={`relative rounded-2xl p-8 border ${t.highlight ? 'border-primary-300 shadow-xl bg-white' : 'border-gray-200 shadow-md bg-white/80'} hover:shadow-2xl transition-all`}>
+          {tiers.map((t, index) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              className={cn(
+                "relative rounded-2xl p-8 border transition-all",
+                t.highlight
+                  ? "border-primary shadow-xl bg-card"
+                  : "border-border shadow-md bg-card hover:shadow-2xl"
+              )}
+            >
               {t.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold bg-gradient-to-r from-primary-600 to-primary-700 text-white px-3 py-1 rounded-full shadow">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold background-gradient text-white px-3 py-1 rounded-full shadow">
                   Most Popular
                 </div>
               )}
               <div className="mb-6">
-                <div className="text-sm font-semibold text-gray-500">{t.name}</div>
+                <div className="text-sm font-semibold text-muted-foreground">{t.name}</div>
                 <div className="mt-2 flex items-end justify-center gap-1">
-                  <div className="text-4xl font-extrabold text-gray-900">{t.price}</div>
-                  <div className="text-gray-500 mb-1">{t.period}</div>
+                  <div className="text-4xl font-extrabold text-gradient">{t.price}</div>
+                  <div className="text-muted-foreground mb-1">{t.period}</div>
                 </div>
               </div>
 
-              <ul className="space-y-3 text-gray-700 mb-8">
+              <ul className="space-y-3 text-foreground mb-8">
                 {t.features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
-                    <FaCheck className="text-green-600 mt-1" />
+                    <FaCheck className="text-green-600 mt-1 flex-shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <button className={`w-full py-3 rounded-xl font-semibold shadow ${t.highlight ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:shadow-xl' : 'bg-white border-2 border-gray-200 hover:border-primary-500 hover:text-primary-600'}`}>
+              <button
+                className={cn(
+                  "w-full py-3 rounded-xl font-semibold shadow transition-all",
+                  t.highlight
+                    ? "background-gradient text-white hover:shadow-xl transform hover:scale-105"
+                    : "bg-card border-2 border-border hover:border-primary hover:text-primary"
+                )}
+              >
                 {t.cta}
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

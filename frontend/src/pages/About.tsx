@@ -1,89 +1,181 @@
 import React from 'react'
 import { FaHandshake, FaShieldAlt, FaBolt, FaCompass, FaCheckCircle } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { cn } from '../lib/utils'
 
 export default function About() {
   return (
-    <div className="bg-white">
+    <div className="relative min-h-screen">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 z-[-1] opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(circle at top left, var(--gradient-1), transparent 60%),
+              radial-gradient(circle at bottom right, var(--gradient-2), transparent 60%)
+            `,
+          }}
+        />
+      </div>
+
       {/* Header */}
       <section className="container pt-16 pb-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-700 bg-clip-text text-transparent">
-          About UtopiaHire
-        </h1>
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-extrabold tracking-tight"
+        >
+          <span className="text-gradient">About UtopiaHire</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto"
+        >
           We help candidates practice smarter interviews with AI guidance, actionable feedback, and career-ready tools.
-        </p>
+        </motion.p>
       </section>
 
       {/* Mission + Values */}
       <section className="container grid md:grid-cols-2 gap-10 items-center pb-16">
-        <div className="order-2 md:order-1">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
-          <p className="text-gray-600 leading-relaxed">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="order-2 md:order-1"
+        >
+          <h2 className="text-2xl font-bold text-foreground mb-4">Our Mission</h2>
+          <p className="text-muted-foreground leading-relaxed">
             Interviews can be stressful and unpredictable. We believe preparation should be accessible, personalized, and measurable.
             UtopiaHire simulates real-world interviews, provides immediate feedback, and guides your improvement over time.
           </p>
-          <ul className="mt-6 space-y-3 text-gray-700">
-            <li className="flex items-center gap-2"><FaCheckCircle className="text-primary-600" /> AI-driven interview practice</li>
-            <li className="flex items-center gap-2"><FaCheckCircle className="text-primary-600" /> Actionable, structured feedback</li>
-            <li className="flex items-center gap-2"><FaCheckCircle className="text-primary-600" /> Career tools across your journey</li>
+          <ul className="mt-6 space-y-3 text-foreground">
+            <li className="flex items-center gap-2"><FaCheckCircle className="text-primary" /> AI-driven interview practice</li>
+            <li className="flex items-center gap-2"><FaCheckCircle className="text-primary" /> Actionable, structured feedback</li>
+            <li className="flex items-center gap-2"><FaCheckCircle className="text-primary" /> Career tools across your journey</li>
           </ul>
-        </div>
-        <div className="order-1 md:order-2">
-          <div className="rounded-3xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 p-8 shadow-lg border border-gray-100">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="order-1 md:order-2"
+        >
+          <div className="rounded-3xl p-8 shadow-lg border border-border bg-card">
             <div className="grid grid-cols-2 gap-4">
-              <div className="h-32 rounded-2xl bg-primary-100" />
-              <div className="h-32 rounded-2xl bg-primary-200" />
-              <div className="h-32 rounded-2xl bg-secondary-200" />
-              <div className="h-32 rounded-2xl bg-secondary-100" />
+              <div className="h-32 rounded-2xl bg-primary/10 animate-fade-in" />
+              <div className="h-32 rounded-2xl bg-primary/20 animate-fade-in animation-delay-200" />
+              <div className="h-32 rounded-2xl bg-primary/20 animate-fade-in animation-delay-400" />
+              <div className="h-32 rounded-2xl bg-primary/10 animate-fade-in animation-delay-600" />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Pillars */}
       <section className="container pb-20">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">What sets us apart</h3>
+        <motion.h3
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl font-bold text-foreground mb-6 text-center"
+        >
+          What sets us apart
+        </motion.h3>
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-primary-300 shadow-sm hover:shadow-lg transition-all">
-            <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
-              <FaBolt className="text-primary-600" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -8 }}
+            className="group bg-card rounded-2xl p-8 border border-border hover:border-primary shadow-sm hover:shadow-lg transition-all"
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <FaBolt className="text-primary" />
             </div>
-            <h4 className="font-semibold text-gray-900 mb-2">Instant feedback</h4>
-            <p className="text-gray-600">Actionable insights after each answer to help you iterate quickly.</p>
-          </div>
-          <div className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-primary-300 shadow-sm hover:shadow-lg transition-all">
-            <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
-              <FaShieldAlt className="text-primary-700" />
+            <h4 className="font-semibold text-card-foreground mb-2">Instant feedback</h4>
+            <p className="text-muted-foreground">Actionable insights after each answer to help you iterate quickly.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ y: -8 }}
+            className="group bg-card rounded-2xl p-8 border border-border hover:border-primary shadow-sm hover:shadow-lg transition-all"
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <FaShieldAlt className="text-primary" />
             </div>
-            <h4 className="font-semibold text-gray-900 mb-2">Realistic practice</h4>
-            <p className="text-gray-600">Simulations mirror real interview flows and difficulty levels.</p>
-          </div>
-          <div className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-primary-300 shadow-sm hover:shadow-lg transition-all">
-            <div className="w-12 h-12 rounded-xl bg-secondary-100 flex items-center justify-center mb-4">
-              <FaCompass className="text-secondary-700" />
+            <h4 className="font-semibold text-card-foreground mb-2">Realistic practice</h4>
+            <p className="text-muted-foreground">Simulations mirror real interview flows and difficulty levels.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ y: -8 }}
+            className="group bg-card rounded-2xl p-8 border border-border hover:border-primary shadow-sm hover:shadow-lg transition-all"
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <FaCompass className="text-primary" />
             </div>
-            <h4 className="font-semibold text-gray-900 mb-2">Guided growth</h4>
-            <p className="text-gray-600">Structured paths so you always know your next step to improve.</p>
-          </div>
+            <h4 className="font-semibold text-card-foreground mb-2">Guided growth</h4>
+            <p className="text-muted-foreground">Structured paths so you always know your next step to improve.</p>
+          </motion.div>
         </div>
       </section>
 
       {/* Microservices overview */}
       <section className="container pb-24">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Tools you'll access after sign-in</h3>
+        <motion.h3
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl font-bold text-foreground mb-6 text-center"
+        >
+          Tools you'll access after sign-in
+        </motion.h3>
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="rounded-2xl p-6 bg-gradient-to-br from-primary-50 to-white border border-primary-100">
-            <h4 className="font-semibold text-gray-900 mb-2">AI Interviewer</h4>
-            <p className="text-gray-600">Practice behavioral and technical interviews with instant feedback.</p>
-          </div>
-          <div className="rounded-2xl p-6 bg-gradient-to-br from-primary-50 to-white border border-primary-100">
-            <h4 className="font-semibold text-gray-900 mb-2">CV Reviewer & Enhancer</h4>
-            <p className="text-gray-600">Get suggestions to improve clarity, impact and keyword alignment.</p>
-          </div>
-          <div className="rounded-2xl p-6 bg-gradient-to-br from-secondary-50 to-white border border-secondary-100">
-            <h4 className="font-semibold text-gray-900 mb-2">Job Matcher</h4>
-            <p className="text-gray-600">Match your profile with relevant roles and get tailored preparation.</p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="rounded-2xl p-6 bg-card border border-primary/20 shadow-md hover:shadow-xl transition-all"
+          >
+            <h4 className="font-semibold text-card-foreground mb-2">AI Interviewer</h4>
+            <p className="text-muted-foreground">Practice behavioral and technical interviews with instant feedback.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="rounded-2xl p-6 bg-card border border-primary/20 shadow-md hover:shadow-xl transition-all"
+          >
+            <h4 className="font-semibold text-card-foreground mb-2">CV Reviewer & Enhancer</h4>
+            <p className="text-muted-foreground">Get suggestions to improve clarity, impact and keyword alignment.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="rounded-2xl p-6 bg-card border border-primary/20 shadow-md hover:shadow-xl transition-all"
+          >
+            <h4 className="font-semibold text-card-foreground mb-2">Job Matcher</h4>
+            <p className="text-muted-foreground">Match your profile with relevant roles and get tailored preparation.</p>
+          </motion.div>
         </div>
       </section>
     </div>
