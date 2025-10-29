@@ -41,12 +41,12 @@ export default function InterviewerSetup() {
 
   return (
     <div className="container py-10">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Create an Interview</h1>
+      <h1 className="text-3xl font-bold text-foreground mb-6">Create an Interview</h1>
 
       <form onSubmit={createInterview} className="grid md:grid-cols-2 gap-8">
         {/* Left: CV upload */}
         <div>
-          <h2 className="font-semibold text-gray-900 mb-3">Upload your CV</h2>
+          <h2 className="font-semibold text-foreground mb-3">Upload your CV</h2>
           <div
             className="rounded-2xl border-2 border-dashed border-gray-300 p-6 text-center bg-white hover:border-primary-400 transition"
             onDragOver={(e) => e.preventDefault()}
@@ -75,7 +75,7 @@ export default function InterviewerSetup() {
 
         {/* Right: job details */}
         <div>
-          <h2 className="font-semibold text-gray-900 mb-3">Job details</h2>
+          <h2 className="font-semibold text-foreground mb-3">Job details</h2>
           <div className="grid grid-cols-1 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">Job title</label>

@@ -51,8 +51,8 @@ export default function Interview() {
 
   return (
     <div className="container py-8">
-      <h1 className="text-2xl font-bold text-gray-900">Interview Session</h1>
-      <p className="text-gray-600 mt-1">{interviewConfig.jobTitle} — {interviewConfig.seniority} @ {interviewConfig.company}</p>
+      <h1 className="text-2xl font-bold text-foreground">Interview Session</h1>
+      <p className="text-muted-foreground mt-1">{interviewConfig.jobTitle} — {interviewConfig.seniority} @ {interviewConfig.company}</p>
 
       <div className="grid md:grid-cols-2 gap-6 mt-6">
         <div className="bg-white rounded-2xl p-4 border border-gray-200">

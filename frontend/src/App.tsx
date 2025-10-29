@@ -14,12 +14,15 @@ import { AuthProvider } from './AuthContext'
 import { ServiceProvider } from './ServiceContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import AuthModal from './components/AuthModal'
+import BackgroundShader from './components/BackgroundShader'
 
 export default function App() {
   return (
     <AuthProvider>
       <ServiceProvider>
         <div className="app-root">
+          {/* Global interactive shader background */}
+          <BackgroundShader className="fixed inset-0 -z-10" />
           <Nav />
           <AuthModal />
           <main>

@@ -57,18 +57,7 @@ const tiers: Tier[] = [
 export default function Pricing() {
   return (
     <div className="relative min-h-screen">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 z-[-1] opacity-30">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(circle at top center, var(--gradient-1), transparent 60%),
-              radial-gradient(circle at bottom center, var(--gradient-2), transparent 60%)
-            `,
-          }}
-        />
-      </div>
+      {/* Background handled globally by BackgroundShader */}
 
       <section className="container pt-16 pb-10 text-center">
         <motion.h1

@@ -34,8 +34,8 @@ export default function JobMatcher() {
 
   return (
     <div className="container py-10">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Job Matcher</h1>
-      <p className="text-gray-600 mb-4">Paste your CV text to get tailored job suggestions (demo)</p>
+      <h1 className="text-3xl font-bold text-foreground mb-6">Job Matcher</h1>
+      <p className="text-muted-foreground mb-4">Paste your CV text to get tailored job suggestions (demo)</p>
       <textarea className="w-full min-h-[160px] rounded-xl border-2 border-gray-200 p-3 focus:border-primary-500" value={text} onChange={(e) => setText(e.target.value)} placeholder="Paste your CV here..." />
       <button onClick={match} className="mt-4 w-full py-3 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold">Find jobs</button>
 

@@ -13,13 +13,13 @@ export default function Nav() {
   const { user, logout, openAuthModal } = context
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200/50 shadow-sm">
+    <header className="sticky top-0 z-40 bg-black/40 backdrop-blur-md border-b border-white/10 shadow-[0_0_40px_rgba(153,75,255,0.15)]">
       <div className="container">
         <div className="grid grid-cols-3 items-center py-4">
           {/* left: brand + interview cta */}
           <div className="justify-self-start flex items-center gap-4">
             <Link 
-              className="text-2xl font-extrabold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent hover:from-primary-700 hover:to-primary-800 transition-all" 
+              className="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#36cde1] via-[#a56bff] to-white hover:opacity-90 transition-opacity" 
               to="/"
             >
               UtopiaHire
@@ -28,8 +28,8 @@ export default function Nav() {
 
           {/* center: main links */}
           <nav className="justify-self-center flex items-center gap-8">
-            <Link className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors" to="/about">About</Link>
-            <Link className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors" to="/pricing">Pricing</Link>
+            <Link className="text-sm font-medium text-white/70 hover:text-white transition-colors" to="/about">About</Link>
+            <Link className="text-sm font-medium text-white/70 hover:text-white transition-colors" to="/pricing">Pricing</Link>
           </nav>
 
           {/* right: auth / dashboard */}
@@ -46,7 +46,7 @@ export default function Nav() {
             )}
             {user ? (
               <button
-                className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"
+                className="text-sm font-medium text-white/70 hover:text-white transition-colors"
                 onClick={logout}
               >
                 Logout
@@ -54,7 +54,7 @@ export default function Nav() {
             ) : (
               <>
                 <button
-                  className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"
+                  className="text-sm font-medium text-white/70 hover:text-white transition-colors"
                   onClick={() => openAuthModal('login')}
                 >
                   Sign in

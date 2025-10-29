@@ -6,18 +6,7 @@ import { cn } from '../lib/utils'
 export default function About() {
   return (
     <div className="relative min-h-screen">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 z-[-1] opacity-30">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(circle at top left, var(--gradient-1), transparent 60%),
-              radial-gradient(circle at bottom right, var(--gradient-2), transparent 60%)
-            `,
-          }}
-        />
-      </div>
+      {/* Background handled globally by BackgroundShader */}
 
       {/* Header */}
       <section className="container pt-16 pb-10 text-center">

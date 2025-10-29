@@ -10,6 +10,9 @@
     "lint": "eslint src --ext ts,tsx"
   },
   "dependencies": {
+    "@react-three/drei": "^9.0.0",
+    "@react-three/fiber": "^8.0.0",
+    "@shadergradient/react": "^2.4.5",
     "axios": "^1.6.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
@@ -17,7 +20,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.14.1",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "three": "^0.155.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

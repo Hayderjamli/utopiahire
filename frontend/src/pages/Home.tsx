@@ -15,21 +15,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 z-[-1] animate-fade-in opacity-0 animation-delay-1000">
-        <div
-          className="absolute inset-0 brightness-150"
-          style={{
-            background: `
-              radial-gradient(circle at top left, var(--gradient-1), transparent 50%),
-              radial-gradient(circle at top right, var(--gradient-2), transparent 50%),
-              radial-gradient(circle at bottom left, var(--gradient-2), transparent 50%),
-              radial-gradient(circle at bottom right, var(--gradient-1), transparent 50%)
-            `,
-          }}
-        />
-        <div className="absolute inset-0 backdrop-blur-[100px]" />
-      </div>
+      {/* Background handled globally by BackgroundShader */}
 
       {/* Hero Section */}
       <section className="relative container pt-20 pb-32">
@@ -45,7 +31,7 @@ export default function Home() {
             )}
           >
             <FaRocket className="text-primary animate-bounce" />
-            <span className="text-sm font-medium text-foreground">AI-Powered Interview Practice</span>
+            <span className="text-sm font-medium text-foreground" style={{ color: 'white' }}>AI-Powered Interview Practice</span>
           </motion.div>
           
           {/* Main Heading */}

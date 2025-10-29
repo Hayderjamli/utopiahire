@@ -64,7 +64,7 @@ export default function CVTool() {
 
   return (
     <div className="container py-10">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">CV Reviewer & Rewriter</h1>
+      <h1 className="text-3xl font-bold text-foreground mb-6">CV Reviewer & Rewriter</h1>
 
       {/* Mode selection - modern segmented cards */}
       <div className="mb-6 grid grid-cols-2 gap-3 max-w-xl">
@@ -141,7 +141,7 @@ export default function CVTool() {
 
         {/* Output */}
         <div>
-          <h2 className="font-semibold text-gray-900 mb-2">Output</h2>
+          <h2 className="font-semibold text-foreground mb-2">Output</h2>
           <pre className="bg-white rounded-2xl p-4 border border-gray-200 whitespace-pre-wrap min-h-[220px]">{result || 'Output will appear here...'}</pre>
           {result && (
             <button onClick={downloadPdf} className="mt-4 px-4 py-2 rounded-lg border-2 border-gray-200 hover:border-primary-500 hover:text-primary-600 bg-white">Download as file</button>
